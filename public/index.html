@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Todo list</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script>
+</head>
+<body>
+<main>
+  <header><p class="eyebrow">A little less to carry</p><h1>Todo list</h1><p class="intro">One shared list, held in your Node server's memory.</p></header>
+  <aside>Tasks stay here while the server runs. Restarting it clears the list.</aside>
+  <form id="add-form"><label for="new-task">What needs doing?</label><div class="input-row"><input id="new-task" name="text" maxlength="500" placeholder="Add a task" required autocomplete="off"><button type="submit" class="primary">Add task</button></div></form>
+  <p id="error" role="alert" hidden></p>
+  <section aria-label="Tasks">
+    <div class="toolbar"><div class="filters" aria-label="Filter tasks"><button data-filter="all" aria-pressed="true">All</button><button data-filter="active" aria-pressed="false">Active</button><button data-filter="done" aria-pressed="false">Done</button></div><button id="refresh">Refresh</button></div>
+    <p id="status" role="status">Loading tasks...</p><ul id="tasks"></ul><p id="empty" hidden></p>
+    <footer><span id="count"></span><button id="clear" disabled>Clear completed</button></footer>
+  </section>
+  <p class="note">No browser storage. Other browsers see the same list when they refresh. This is a local demo, without accounts or sync across server instances.</p>
+</main>
+</body></html>

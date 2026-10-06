@@ -1,0 +1,9 @@
+{
+  "name": "todo-node-memory",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A dependency-free Node.js todo web app with process-local memory storage.",
+  "engines": { "node": ">=22" },
+  "scripts": { "start": "node server.js", "test": "node --test test/api.test.js", "test:browser": "node test/browser.mjs" }
+}
