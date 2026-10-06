@@ -72,6 +72,14 @@ export function createTodoServer() {
         }
         throw new RequestError(405, 'Method not allowed.');
       }
+      if (url.pathname === '/api/export') {
+        if (req.method !== 'GET') throw new RequestError(405, 'Method not allowed.');
+        res.writeHead(200, {
+          'Content-Type': 'application/json; charset=utf-8',
+          'Content-Disposition': `attachment; filename="tasks-${new Date().toISOString().slice(0, 10)}.json"`,
+        });
+        return res.end(JSON.stringify({ tasks: [...tasks.values()] }, null, 2));
+      }
       const match = url.pathname.match(/^\/api\/tasks\/([a-zA-Z0-9-]+)$/);
       if (match) {
         if (!['PATCH', 'DELETE'].includes(req.method)) throw new RequestError(405, 'Method not allowed.');
